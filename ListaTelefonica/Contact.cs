@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace ListaTelefonica
 {
-    internal class Contact
-    {
-        string name;
-        List<string> phoneNumbers;
-        Address address;
-        string email;
-        public Contact(string name, List<string> numbers, Address address, string email)
-        {
-            this.name = name;
-            this.phoneNumbers = numbers;
-            this.address = address;
-            this.email = email;
-            
-        }
+	internal class Contact
+	{
+		public string Name { get; set; }
+		public List<string> PhoneNumbers { get; set; }
+		public Address Address { get; set; }
+		public string Email { get; set; }
 
-        public override string? ToString()
-        {
-            string numbers = "";
-            foreach (var item in phoneNumbers)
-            {
-                numbers += item + "-";
-            }
-            string s;
+		public Contact(string name, List<string> phoneNumbers, Address address, string email)
+		{
+			Name = name;
+			PhoneNumbers = phoneNumbers;
+			Address = address;
+			Email = email;
+		}
 
-            s = $"{name};{numbers};{address.ToString()};{email}";
+		public override string? ToString()
+		{
+			string numbers = "";
+			foreach (var item in PhoneNumbers)
+			{
+				numbers += item + "-";
+			}
+			string s;
 
-            return s;
-        }
-    }
+			s = $"{Name};{numbers};{Address.ToString()};{Email}";
+
+			return s;
+		}
+	}
 }
