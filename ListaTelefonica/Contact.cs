@@ -9,38 +9,30 @@ namespace ListaTelefonica
     internal class Contact
     {
         string name;
-        PhoneList phoneNumbers;
+        List<string> phoneNumbers;
         Address address;
         string email;
-        Contact next;
-        public Contact(string name, PhoneList phoneNumbers, Address address, string email)
+        public Contact(string name, List<string> numbers, Address address, string email)
         {
             this.name = name;
-            this.phoneNumbers = phoneNumbers;
+            this.phoneNumbers = numbers;
             this.address = address;
             this.email = email;
-            this.next = null;
+            
         }
 
-        public void setNext(Contact c)
+        public override string? ToString()
         {
-            next = c;
-        }
-        public Contact getNext()
-        {
-            return next;
-        }
-        public void PrintContact()
-        {
-            Console.WriteLine("Nome: " + name);
-            Console.WriteLine("E-mail: " + email);
-            Console.WriteLine("Números telefônicos: ");
-            phoneNumbers.PrintList();
-            Console.WriteLine("Endereço");
-            Console.WriteLine(address.ToString());
+            string numbers = "";
+            foreach (var item in phoneNumbers)
+            {
+                numbers += item + "-";
+            }
+            string s;
 
+            s = $"{name};{numbers};{address.ToString()};{email}";
+
+            return s;
         }
-
-
     }
 }

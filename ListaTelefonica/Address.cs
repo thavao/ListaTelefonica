@@ -26,7 +26,8 @@ namespace ListaTelefonica
 
         public override string? ToString()
         {
-            return $"Cidade: {this.city} - {this.state}\nBairro: {this.neighborhood}, Rua: {street}, N:{number}\nCEP: {this.CEP}";
+            //return $"Cidade: {this.city} - {this.state}\nBairro: {this.neighborhood}, Rua: {street}, N:{number}\nCEP: {this.CEP}";
+            return $"{this.city};{this.street};{this.state};{this.number};{this.neighborhood};{this.CEP}";
         }
     }
 }
