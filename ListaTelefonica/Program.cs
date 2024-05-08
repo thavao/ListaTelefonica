@@ -60,32 +60,70 @@ void ShowAll(List<Contact> contactList)
     }
 }
 
+List<string> CreatePhoneNumbers()
+{
+    List<string> numbers = new();
+    int option;
+    do
+    {
+        Console.WriteLine("Digite um número de telefone: ");
+        numbers.Add(Console.ReadLine());
+
+        Console.WriteLine("Deseja inserir mais um telefone?");
+        Console.WriteLine("1 - sim | 2 - não");
+        option = int.Parse(Console.ReadLine());
+    } while (option != 1);
+    return numbers;
+}
+Address CreateAddress()
+{
+	Console.Write("Estado: ");
+	string state = Console.ReadLine();
+
+	Console.Write("Cidade: ");
+	string city = Console.ReadLine();
+
+	Console.Write("Rua: ");
+	string street = Console.ReadLine();
+
+	Console.Write("Numero: ");
+	string number = Console.ReadLine();
+
+	Console.Write("Bairro: ");
+	string neighborhood = Console.ReadLine();
+
+	Console.Write("CEP: ");
+	string CEP = Console.ReadLine();
+
+    return new Address(city, street, state, number, neighborhood, CEP);
+}
+Contact CreateContact()
+{
+    Console.WriteLine(">>Informações do Contato<<");
+
+    Console.Write("Nome: ");
+    string name = Console.ReadLine().ToLower();
+
+    Console.Write("Email: ");
+    string email = Console.ReadLine().ToLower();
+
+    Console.WriteLine(">Telefones<");
+    List<string> PhoneNumbers = CreatePhoneNumbers();
+
+    Console.WriteLine(">Endereço<");
+    Address address = CreateAddress();
+
+    return new Contact(name, PhoneNumbers, address, email);
+
+}
+
 string path = Environment.CurrentDirectory + @"\Arquivos\";
 string file = "Contatos.txt";
 
 
 List<Contact> contacts = LoadFile(path, file);
 
-Console.WriteLine();
-
-/*List<string> phones = new();
-List<string> phones2 = new();
-
-phones2.Add("1397813");
-phones2.Add("9523536");
-
-
-phones.Add("99832123");
-phones.Add("99763284");
-
-Contact con = new("Sandro", phones, new("Tocantins", "Rua dos Bobos", "São Paulo", "0", "Seilandia", "140023"), "Sandro@gmail.com");
-Contact con2 = new("Carlin", phones2, new("Tocantins", "Av 02", "São Paulo", "423", "Jardim Pitaia", "140058"), "CarlinFuguete@gmail.com");
-contacts.Add(con);
-contacts.Add(con2);
-//phoneList.PrintList();
-Console.WriteLine(con.ToString());
-Console.WriteLine(con2.ToString());*/
-
+contacts.Add(CreateContact());
 
 ShowAll(contacts);
 SaveFile(contacts, path, file);
