@@ -72,7 +72,7 @@ List<string> CreatePhoneNumbers()
         Console.WriteLine("Deseja inserir mais um telefone?");
         Console.WriteLine("1 - sim | 2 - não");
         option = int.Parse(Console.ReadLine());
-    } while (option != 1);
+    } while (option == 1);
     return numbers;
 }
 Address CreateAddress()
@@ -123,9 +123,10 @@ string file = "Contatos.txt";
 
 List<Contact> contacts = LoadFile(path, file);
 
-contacts.Add(CreateContact());
 
-ShowAll(contacts);
+
+
+//ShowAll(contacts);
 SaveFile(contacts, path, file);
 
 Console.WriteLine();
