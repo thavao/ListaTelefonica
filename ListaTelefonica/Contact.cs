@@ -28,6 +28,7 @@ namespace ListaTelefonica
 			{
 				numbers += item + "-";
 			}
+			numbers = numbers.TrimEnd('-');
 			string s;
 
 			s = $"{Name};{numbers};{Address.ToString()};{Email}";
