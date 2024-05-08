@@ -43,14 +43,21 @@ List<Contact> LoadFile(string path, string file)
             {
                 numbers.Add(number);
             }
+            
+            Address address = new Address(contact[2], contact[3], contact[4], contact[5], contact[6], contact[7]);
 
-            string[] stringAddress = contact[2].Split(";");
-            Address address = new(stringAddress[0], stringAddress[1], stringAddress[2], stringAddress[3], stringAddress[4], stringAddress[5]);
-
-            contactList.Add(new Contact(contact[0], numbers, address, contact[3]));
+            contactList.Add(new Contact(contact[0], numbers, address, contact[8]));
         }
     }
     return contactList;
+}
+
+void ShowAll(List<Contact> contactList)
+{
+    foreach (var item in contactList)
+    {
+        Console.WriteLine(item.ToString());
+    }
 }
 
 string path = Environment.CurrentDirectory + @"\Arquivos\";
@@ -58,9 +65,10 @@ string file = "Contatos.txt";
 
 
 List<Contact> contacts = LoadFile(path, file);
+
 Console.WriteLine();
 
-List<string> phones = new();
+/*List<string> phones = new();
 List<string> phones2 = new();
 
 phones2.Add("1397813");
@@ -70,7 +78,7 @@ phones2.Add("9523536");
 phones.Add("99832123");
 phones.Add("99763284");
 
-/*Contact con = new("Sandro", phones, new("Tocantins", "Rua dos Bobos", "São Paulo", "0", "Seilandia", "140023"), "Sandro@gmail.com");
+Contact con = new("Sandro", phones, new("Tocantins", "Rua dos Bobos", "São Paulo", "0", "Seilandia", "140023"), "Sandro@gmail.com");
 Contact con2 = new("Carlin", phones2, new("Tocantins", "Av 02", "São Paulo", "423", "Jardim Pitaia", "140058"), "CarlinFuguete@gmail.com");
 contacts.Add(con);
 contacts.Add(con2);
@@ -79,7 +87,7 @@ Console.WriteLine(con.ToString());
 Console.WriteLine(con2.ToString());*/
 
 
-
+ShowAll(contacts);
 SaveFile(contacts, path, file);
 
 Console.WriteLine();
